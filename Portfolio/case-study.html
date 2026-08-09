@@ -1,0 +1,3789 @@
+<!DOCTYPE html>
+<html lang="en"
+      x-data="caseStudyApp()"
+      :class="{'dark':dark}"
+      class="scroll-smooth">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <meta id="metaDescription"
+        name="description"
+        content="Project case study by Manoj Kumar S.">
+
+  <meta name="author"
+        content="Manoj Kumar S">
+
+  <meta name="robots"
+        content="index, follow">
+
+  <link rel="canonical"
+        href="YOUR_DEPLOYED_PORTFOLIO_URL/case-study.html">
+
+  <meta property="og:type"
+        content="article">
+
+  <meta id="ogTitle"
+        property="og:title"
+        content="Project Case Study | Manoj Kumar S">
+
+  <meta id="ogDescription"
+        property="og:description"
+        content="Project case study by Manoj Kumar S">
+
+  <meta property="og:url"
+        content="YOUR_DEPLOYED_PORTFOLIO_URL/case-study.html">
+
+  <meta property="og:image"
+        content="YOUR_DEPLOYED_PORTFOLIO_URL/assets/images/og-cover.jpg">
+
+  <meta name="twitter:card"
+        content="summary_large_image">
+
+  <meta name="twitter:title"
+        content="Project Case Study | Manoj Kumar S">
+
+  <meta name="twitter:description"
+        content="Project case study by Manoj Kumar S">
+
+  <meta name="twitter:image"
+        content="YOUR_DEPLOYED_PORTFOLIO_URL/assets/images/og-cover.jpg">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+
+  <title>Project Case Study | Manoj Kumar S</title>
+
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+  <!-- Alpine JS -->
+  <script defer
+          src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js">
+  </script>
+
+
+  <!-- Fonts -->
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+        rel="stylesheet">
+
+
+  <script>
+
+    tailwind.config = {
+
+      darkMode:'class',
+
+      theme:{
+
+        extend:{
+
+          fontFamily:{
+
+            display:[
+              'PT Sans',
+              'sans-serif'
+            ],
+
+            body:[
+              'DM Sans',
+              'sans-serif'
+            ]
+
+          },
+
+          colors:{
+
+            accent:'#FF6B2B',
+
+            'accent-light':'#FF8F5C'
+
+          }
+
+        }
+
+      }
+
+    }
+
+  </script>
+
+
+
+  <style>
+
+    /* ═══════════════════════════════════════
+       GLOBAL
+    ═══════════════════════════════════════ */
+
+    *,
+    *::before,
+    *::after{
+      box-sizing:border-box;
+    }
+
+
+    html,
+    body{
+      font-family:'DM Sans',sans-serif;
+    }
+
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6{
+      font-family:'PT Sans',sans-serif;
+    }
+
+
+    body{
+      transition:
+        background-color .3s,
+        color .3s;
+    }
+
+
+    body::before{
+
+      content:'';
+
+      position:fixed;
+
+      inset:0;
+
+      pointer-events:none;
+
+      z-index:0;
+
+      opacity:.35;
+
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+
+    }
+
+
+
+    /* Scrollbar */
+
+    ::-webkit-scrollbar{
+      width:5px;
+    }
+
+
+    ::-webkit-scrollbar-track{
+      background:transparent;
+    }
+
+
+    ::-webkit-scrollbar-thumb{
+
+      background:#FF6B2B;
+
+      border-radius:99px;
+
+    }
+
+
+
+    [x-cloak]{
+      display:none !important;
+    }
+
+
+
+    /* ═══════════════════════════════════════
+       PROGRESS BAR
+    ═══════════════════════════════════════ */
+
+    .progress-bar{
+
+      position:fixed;
+
+      top:0;
+
+      left:0;
+
+      height:3px;
+
+      background:#FF6B2B;
+
+      z-index:100;
+
+      transition:
+        width .1s linear;
+
+    }
+
+
+
+    /* ═══════════════════════════════════════
+       NAV
+    ═══════════════════════════════════════ */
+
+    .nl{
+      position:relative;
+    }
+
+
+    .nl::after{
+
+      content:'';
+
+      position:absolute;
+
+      bottom:-2px;
+
+      left:0;
+
+      width:0;
+
+      height:1.5px;
+
+      background:currentColor;
+
+      transition:
+        width .22s cubic-bezier(.4,0,.2,1);
+
+    }
+
+
+    .nl:hover::after{
+      width:100%;
+    }
+
+
+
+    /* ═══════════════════════════════════════
+       BUTTON SHIMMER
+    ═══════════════════════════════════════ */
+
+    .shimmer{
+
+      position:relative;
+
+      overflow:hidden;
+
+    }
+
+
+    .shimmer::after{
+
+      content:'';
+
+      position:absolute;
+
+      top:0;
+
+      left:-100%;
+
+      width:60%;
+
+      height:100%;
+
+      background:
+        rgba(255,255,255,.18);
+
+      transform:
+        skewX(-20deg);
+
+      transition:
+        left .4s cubic-bezier(.4,0,.2,1);
+
+    }
+
+
+    .shimmer:hover::after{
+      left:160%;
+    }
+
+
+
+    /* ═══════════════════════════════════════
+       REVEAL
+    ═══════════════════════════════════════ */
+
+    .reveal{
+
+      opacity:0;
+
+      transform:
+        translateY(22px);
+
+      transition:
+
+        opacity .55s cubic-bezier(.4,0,.2,1),
+
+        transform .55s cubic-bezier(.4,0,.2,1);
+
+    }
+
+
+    .reveal.visible{
+
+      opacity:1;
+
+      transform:none;
+
+    }
+
+
+    .d1{
+      transition-delay:.07s;
+    }
+
+    .d2{
+      transition-delay:.14s;
+    }
+
+    .d3{
+      transition-delay:.21s;
+    }
+
+
+
+    /* ═══════════════════════════════════════
+       CASE STUDY HERO IMAGE
+       Full image visible — no crop
+    ═══════════════════════════════════════ */
+
+    .case-cover{
+
+      width:100%;
+
+      aspect-ratio:16 / 9;
+
+      max-height:520px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      overflow:hidden;
+
+      background:#0D0F12;
+
+    }
+
+
+    .case-cover img{
+
+      width:100%;
+
+      height:100%;
+
+      object-fit:contain;
+
+      object-position:center;
+
+      display:block;
+
+      -webkit-user-drag:none;
+
+      user-select:none;
+
+    }
+
+
+
+    /* ═══════════════════════════════════════
+       CARD INTERACTION
+    ═══════════════════════════════════════ */
+
+    .card-h{
+
+      transition:
+
+        transform .25s cubic-bezier(.4,0,.2,1),
+
+        border-color .22s ease,
+
+        box-shadow .22s ease;
+
+      -webkit-tap-highlight-color:
+        transparent;
+
+      touch-action:
+        manipulation;
+
+    }
+
+
+    @media (hover:hover) and (pointer:fine){
+
+      .card-h:hover{
+
+        transform:
+          translateY(-3px);
+
+        border-color:
+          #FF6B2B !important;
+
+        box-shadow:
+
+          0 0 0 1px rgba(255,107,43,.08),
+
+          0 8px 22px rgba(255,107,43,.08);
+
+      }
+
+    }
+
+
+    @media (hover:none),
+           (pointer:coarse){
+
+      .card-h:active,
+      .card-h.touch-active{
+
+        transform:
+          translateY(-2px);
+
+        border-color:
+          #FF6B2B !important;
+
+        box-shadow:
+
+          0 0 0 1px rgba(255,107,43,.10),
+
+          0 6px 18px rgba(255,107,43,.08);
+
+      }
+
+    }
+
+
+
+    /* ═══════════════════════════════════════
+       FEATURE CARDS
+    ═══════════════════════════════════════ */
+
+    .feature-card{
+
+      border:
+        1px solid #e4e4e7;
+
+      transition:
+
+        transform .22s ease,
+
+        border-color .2s ease,
+
+        box-shadow .2s ease;
+
+    }
+
+
+    .dark .feature-card{
+      border-color:#27272a;
+    }
+
+
+    @media (hover:hover) and (pointer:fine){
+
+      .feature-card:hover{
+
+        transform:
+          translateY(-2px);
+
+        border-color:
+          #FF6B2B;
+
+        box-shadow:
+          0 6px 18px rgba(255,107,43,.07);
+
+      }
+
+    }
+
+
+
+    /* ═══════════════════════════════════════
+       ARTICLE TYPOGRAPHY
+    ═══════════════════════════════════════ */
+
+    .prose-cs h2{
+
+      font-family:
+        'PT Sans',sans-serif;
+
+      font-size:
+        1.55rem;
+
+      font-weight:700;
+
+      margin:
+        2.5rem 0 .85rem;
+
+      line-height:1.25;
+
+    }
+
+
+    .prose-cs p{
+
+      margin:
+        0 0 1.15rem;
+
+      line-height:1.78;
+
+      color:#52525b;
+
+    }
+
+
+    .dark .prose-cs p{
+      color:#a1a1aa;
+    }
+
+
+    .prose-cs ul{
+
+      margin:
+        0 0 1.3rem 1.4rem;
+
+      list-style:
+        disc;
+
+    }
+
+
+    .prose-cs li{
+
+      margin-bottom:.5rem;
+
+      line-height:1.7;
+
+      color:#52525b;
+
+    }
+
+
+    .dark .prose-cs li{
+      color:#a1a1aa;
+    }
+
+
+
+    /* ═══════════════════════════════════════
+       PROCESS
+    ═══════════════════════════════════════ */
+
+    .step-badge{
+
+      width:2rem;
+
+      height:2rem;
+
+      min-width:2rem;
+
+      border-radius:50%;
+
+      background:#FF6B2B;
+
+      color:#fff;
+
+      font-family:
+        'PT Sans',sans-serif;
+
+      font-weight:700;
+
+      font-size:.82rem;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+    }
+
+
+
+    /* ═══════════════════════════════════════
+       RELATED PROJECT COVER
+    ═══════════════════════════════════════ */
+
+    .related-cover{
+
+      width:100%;
+
+      aspect-ratio:16 / 9;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      overflow:hidden;
+
+      background:#0D0F12;
+
+    }
+
+
+    .related-cover img{
+
+      width:100%;
+
+      height:100%;
+
+      object-fit:contain;
+
+      object-position:center;
+
+      display:block;
+
+    }
+
+
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE — MOBILE
+    ═══════════════════════════════════════ */
+
+    @media (max-width:639px){
+
+
+      header nav{
+
+        padding-left:1rem !important;
+
+        padding-right:1rem !important;
+
+      }
+
+
+      .section-pad{
+
+        padding-left:1rem !important;
+
+        padding-right:1rem !important;
+
+      }
+
+
+      .case-header{
+
+        padding-top:6.25rem !important;
+
+        padding-bottom:2rem !important;
+
+      }
+
+
+      .case-header h1{
+
+        font-size:
+          clamp(
+            2.4rem,
+            12vw,
+            3.2rem
+          );
+
+        line-height:1.05;
+
+      }
+
+
+      .case-header > p{
+
+        font-size:.95rem;
+
+      }
+
+
+      .meta-grid{
+
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0,1fr)
+          );
+
+        gap:1.25rem;
+
+        padding-top:1.4rem !important;
+
+        padding-bottom:1.4rem !important;
+
+      }
+
+
+      .case-cover{
+
+        border-radius:1rem !important;
+
+      }
+
+
+      .feature-card{
+
+        padding:1.1rem !important;
+
+      }
+
+
+      .prose-cs h2{
+
+        font-size:1.35rem;
+
+        margin-top:2rem;
+
+      }
+
+
+      .prose-cs p,
+      .prose-cs li{
+
+        font-size:.9rem;
+
+      }
+
+
+      .process-card{
+
+        padding:1.1rem !important;
+
+        gap:.9rem !important;
+
+      }
+
+
+      .related-grid{
+
+        grid-template-columns:1fr !important;
+
+      }
+
+
+      .related-card-content{
+
+        padding:1rem !important;
+
+      }
+
+
+      .project-cta{
+
+        width:100%;
+
+        justify-content:center;
+
+      }
+
+    }
+
+
+
+    /* ═══════════════════════════════════════
+       TABLET
+    ═══════════════════════════════════════ */
+
+    @media (min-width:640px)
+           and (max-width:1023px){
+
+      .related-grid{
+
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0,1fr)
+          ) !important;
+
+      }
+
+    }
+
+
+
+    /* Keyboard */
+
+    a:focus-visible,
+    button:focus-visible{
+
+      outline:
+        2px solid #FF6B2B;
+
+      outline-offset:3px;
+
+    }
+
+
+
+    /* Reduced Motion */
+
+    @media (prefers-reduced-motion:reduce){
+
+      html{
+        scroll-behavior:auto !important;
+      }
+
+
+      *,
+      *::before,
+      *::after{
+
+        animation-duration:
+          .01ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          .01ms !important;
+
+      }
+
+
+      .reveal{
+
+        opacity:1 !important;
+
+        transform:none !important;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+
+<body id="top"
+      class="bg-white
+             dark:bg-zinc-950
+             text-zinc-900
+             dark:text-zinc-100
+             antialiased
+             overflow-x-hidden">
+
+
+
+  <!-- Reading Progress -->
+
+  <div
+    class="progress-bar"
+
+    :style="`width:${progress}%`"
+
+    role="progressbar"
+
+    :aria-valuenow="progress"
+
+    aria-valuemin="0"
+
+    aria-valuemax="100">
+
+  </div>
+
+
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════ -->
+
+  <header
+
+    class="fixed
+           top-0
+           left-0
+           right-0
+           z-50
+           transition-all
+           duration-300"
+
+    :class="scrolled
+
+      ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5'
+
+      : 'bg-transparent'">
+
+
+    <nav
+
+      class="max-w-6xl
+             mx-auto
+             px-6
+             h-16
+             flex
+             items-center
+             justify-between">
+
+
+      <!-- Logo -->
+
+      <a href="index.html"
+
+         class="font-display
+                font-bold
+                text-xl">
+
+        <span class="text-zinc-900 dark:text-white">
+          MJ
+        </span>
+
+        <span class="text-accent">
+          S
+        </span>
+
+      </a>
+
+
+
+      <!-- Desktop Menu -->
+
+      <ul
+
+        class="hidden
+               md:flex
+               items-center
+               gap-8
+               text-sm">
+
+
+        <li>
+
+          <a href="index.html#services"
+
+             class="nl
+                    text-zinc-500
+                    dark:text-zinc-400
+                    hover:text-zinc-900
+                    dark:hover:text-white">
+
+            Services
+
+          </a>
+
+        </li>
+
+
+        <li>
+
+          <a href="projects.html"
+
+             class="nl
+                    text-accent
+                    font-medium">
+
+            Work
+
+          </a>
+
+        </li>
+
+
+        <li>
+
+          <a href="index.html#about"
+
+             class="nl
+                    text-zinc-500
+                    dark:text-zinc-400
+                    hover:text-zinc-900
+                    dark:hover:text-white">
+
+            About
+
+          </a>
+
+        </li>
+
+
+        <li>
+
+          <a href="index.html#experience"
+
+             class="nl
+                    text-zinc-500
+                    dark:text-zinc-400
+                    hover:text-zinc-900
+                    dark:hover:text-white">
+
+            Experience
+
+          </a>
+
+        </li>
+
+
+        <li>
+
+          <a href="index.html#contact"
+
+             class="nl
+                    text-zinc-500
+                    dark:text-zinc-400
+                    hover:text-zinc-900
+                    dark:hover:text-white">
+
+            Contact
+
+          </a>
+
+        </li>
+
+      </ul>
+
+
+
+      <!-- Controls -->
+
+      <div class="flex items-center gap-3">
+
+
+        <button
+
+          type="button"
+
+          @click="dark=!dark"
+
+          class="w-9
+                 h-9
+                 flex
+                 items-center
+                 justify-center
+                 rounded-full
+                 border
+                 border-zinc-200
+                 dark:border-zinc-800
+                 hover:bg-zinc-100
+                 dark:hover:bg-zinc-900
+                 transition-colors"
+
+          :aria-label="
+            dark
+              ? 'Light mode'
+              : 'Dark mode'
+          "
+
+          :aria-pressed="dark">
+
+
+          <svg x-show="!dark"
+               class="w-4 h-4"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke="currentColor">
+
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+
+          </svg>
+
+
+          <svg x-show="dark"
+               class="w-4 h-4"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke="currentColor">
+
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+
+          </svg>
+
+        </button>
+
+
+
+        <a
+
+          href="index.html#contact"
+
+          class="hidden
+                 md:inline-flex
+                 shimmer
+                 bg-accent
+                 text-white
+                 text-sm
+                 font-medium
+                 px-5
+                 py-2
+                 rounded-full
+                 hover:bg-accent-light">
+
+          Hire me →
+
+        </a>
+
+
+
+        <button
+
+          type="button"
+
+          @click="mobileMenu=!mobileMenu"
+
+          class="md:hidden
+                 w-9
+                 h-9
+                 flex
+                 items-center
+                 justify-center
+                 rounded-full
+                 border
+                 border-zinc-200
+                 dark:border-zinc-800"
+
+          aria-label="Toggle menu"
+
+          :aria-expanded="mobileMenu"
+
+          aria-controls="mobileMenu">
+
+
+          <svg x-show="!mobileMenu"
+               class="w-4 h-4"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke="currentColor">
+
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"/>
+
+          </svg>
+
+
+          <svg x-show="mobileMenu"
+               class="w-4 h-4"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke="currentColor">
+
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"/>
+
+          </svg>
+
+        </button>
+
+      </div>
+
+    </nav>
+
+
+
+    <!-- Mobile Menu -->
+
+    <div
+      id="mobileMenu"
+      x-show="mobileMenu"
+
+      x-cloak
+
+      x-transition
+
+      class="md:hidden
+             bg-white
+             dark:bg-zinc-950
+             border-t
+             border-zinc-100
+             dark:border-zinc-900">
+
+
+      <ul class="flex
+                 flex-col
+                 px-6
+                 py-5
+                 gap-4
+                 text-sm
+                 font-medium">
+
+
+        <li>
+
+          <a href="index.html#services"
+             @click="mobileMenu=false">
+
+            Services
+
+          </a>
+
+        </li>
+
+
+        <li>
+
+          <a href="projects.html"
+             @click="mobileMenu=false"
+             class="text-accent">
+
+            Work
+
+          </a>
+
+        </li>
+
+
+        <li>
+
+          <a href="index.html#about"
+             @click="mobileMenu=false">
+
+            About
+
+          </a>
+
+        </li>
+
+
+        <li>
+
+          <a href="index.html#experience"
+             @click="mobileMenu=false">
+
+            Experience
+
+          </a>
+
+        </li>
+
+
+        <li>
+
+          <a href="index.html#contact"
+             @click="mobileMenu=false">
+
+            Contact
+
+          </a>
+
+        </li>
+
+      </ul>
+
+    </div>
+
+  </header>
+
+
+
+  <main x-cloak>
+
+
+
+    <!-- ═══════════════════════════════════════
+         CASE STUDY
+    ═══════════════════════════════════════ -->
+
+    <article>
+
+
+
+      <!-- Header -->
+
+      <header
+
+        class="case-header
+               pt-28
+               sm:pt-32
+               pb-8
+               max-w-4xl
+               mx-auto
+               px-6
+               section-pad">
+
+
+        <a
+
+          href="projects.html"
+
+          class="inline-flex
+                 items-center
+                 gap-2
+                 text-sm
+                 text-zinc-500
+                 dark:text-zinc-400
+                 hover:text-accent
+                 mb-7">
+
+          ← Back to projects
+
+        </a>
+
+
+
+        <!-- Tags -->
+
+        <div class="flex
+                    flex-wrap
+                    gap-1.5
+                    mb-5">
+
+
+          <template
+
+            x-for="tag in project.tags"
+
+            :key="tag">
+
+
+            <span
+
+              class="text-[11px]
+                     bg-zinc-100
+                     dark:bg-zinc-800
+                     text-zinc-600
+                     dark:text-zinc-400
+                     border
+                     border-zinc-200
+                     dark:border-zinc-700
+                     px-2.5
+                     py-1
+                     rounded-full"
+
+              x-text="tag">
+
+            </span>
+
+          </template>
+
+        </div>
+
+
+
+        <p
+
+          class="reveal
+                 text-xs
+                 font-medium
+                 text-accent
+                 tracking-widest
+                 uppercase
+                 mb-3"
+
+          x-text="project.category">
+
+        </p>
+
+
+
+        <h1
+
+          class="reveal d1
+                 font-display
+                 font-bold
+                 text-4xl
+                 md:text-5xl
+                 lg:text-6xl
+                 text-zinc-900
+                 dark:text-white
+                 leading-tight
+                 mb-5"
+
+          x-text="project.title">
+
+        </h1>
+
+
+
+        <p
+
+          class="reveal d2
+                 text-base
+                 sm:text-lg
+                 md:text-xl
+                 text-zinc-500
+                 dark:text-zinc-400
+                 leading-relaxed
+                 mb-8
+                 max-w-3xl"
+
+          x-text="project.subtitle">
+
+        </p>
+
+
+
+        <!-- Meta -->
+
+        <div
+
+          class="reveal d3
+                 meta-grid
+                 grid
+                 grid-cols-2
+                 md:grid-cols-4
+                 gap-4
+                 py-6
+                 border-t
+                 border-b
+                 border-zinc-100
+                 dark:border-zinc-900">
+
+
+          <div>
+
+            <p class="text-[10px]
+                      text-zinc-400
+                      uppercase
+                      tracking-widest
+                      mb-1">
+
+              Type
+
+            </p>
+
+            <p class="font-medium
+                      text-sm
+                      text-zinc-900
+                      dark:text-white"
+               x-text="project.type">
+
+            </p>
+
+          </div>
+
+
+
+          <div>
+
+            <p class="text-[10px]
+                      text-zinc-400
+                      uppercase
+                      tracking-widest
+                      mb-1">
+
+              Role
+
+            </p>
+
+            <p class="font-medium
+                      text-sm
+                      text-zinc-900
+                      dark:text-white"
+               x-text="project.role">
+
+            </p>
+
+          </div>
+
+
+
+          <div>
+
+            <p class="text-[10px]
+                      text-zinc-400
+                      uppercase
+                      tracking-widest
+                      mb-1">
+
+              Year
+
+            </p>
+
+            <p class="font-medium
+                      text-sm
+                      text-zinc-900
+                      dark:text-white"
+               x-text="project.year">
+
+            </p>
+
+          </div>
+
+
+
+          <div>
+
+            <p class="text-[10px]
+                      text-zinc-400
+                      uppercase
+                      tracking-widest
+                      mb-1">
+
+              Focus
+
+            </p>
+
+            <p class="font-medium
+                      text-sm
+                      text-zinc-900
+                      dark:text-white"
+               x-text="project.focus">
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </header>
+
+
+
+      <!-- ═══ HERO COVER ═══ -->
+
+      <div
+
+        class="max-w-5xl
+               mx-auto
+               px-6
+               mb-12
+               sm:mb-16
+               section-pad">
+
+
+        <div
+
+          class="reveal
+                 case-cover
+                 rounded-2xl
+                 sm:rounded-3xl">
+
+          <picture class="block w-full h-full">
+            <source type="image/webp" :srcset="project.image.replace('.png', '.webp')">
+            <img
+              :src="project.image"
+              :alt="project.title"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              width="1400"
+              height="788"
+              class="w-full h-full object-contain object-center">
+          </picture>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ═══ QUICK OVERVIEW ═══ -->
+
+      <div
+
+        class="max-w-5xl
+               mx-auto
+               px-6
+               mb-12
+               sm:mb-16
+               section-pad">
+
+
+        <div
+
+          class="grid
+                 sm:grid-cols-2
+                 lg:grid-cols-3
+                 gap-4">
+
+
+          <div
+
+            class="reveal
+                   feature-card
+                   bg-zinc-50
+                   dark:bg-zinc-900
+                   rounded-2xl
+                   p-5">
+
+
+            <p class="text-xs
+                      text-accent
+                      font-medium
+                      tracking-widest
+                      uppercase
+                      mb-2">
+
+              Problem
+
+            </p>
+
+
+            <p class="text-sm
+                      text-zinc-500
+                      dark:text-zinc-400
+                      leading-relaxed"
+               x-text="project.problemShort">
+
+            </p>
+
+          </div>
+
+
+
+          <div
+
+            class="reveal d1
+                   feature-card
+                   bg-zinc-50
+                   dark:bg-zinc-900
+                   rounded-2xl
+                   p-5">
+
+
+            <p class="text-xs
+                      text-accent
+                      font-medium
+                      tracking-widest
+                      uppercase
+                      mb-2">
+
+              Solution
+
+            </p>
+
+
+            <p class="text-sm
+                      text-zinc-500
+                      dark:text-zinc-400
+                      leading-relaxed"
+               x-text="project.solutionShort">
+
+            </p>
+
+          </div>
+
+
+
+          <div
+
+            class="reveal d2
+                   feature-card
+                   bg-zinc-50
+                   dark:bg-zinc-900
+                   rounded-2xl
+                   p-5
+                   sm:col-span-2
+                   lg:col-span-1">
+
+
+            <p class="text-xs
+                      text-accent
+                      font-medium
+                      tracking-widest
+                      uppercase
+                      mb-2">
+
+              Outcome
+
+            </p>
+
+
+            <p class="text-sm
+                      text-zinc-500
+                      dark:text-zinc-400
+                      leading-relaxed"
+               x-text="project.outcomeShort">
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ═══ CONTENT ═══ -->
+
+      <div
+
+        class="max-w-3xl
+               mx-auto
+               px-6
+               pb-4
+               prose-cs
+               section-pad">
+
+
+        <h2>
+          Project overview
+        </h2>
+
+        <p x-text="project.overview"></p>
+
+
+
+        <h2>
+          The problem
+        </h2>
+
+        <p x-text="project.problem"></p>
+
+
+
+        <h2>
+          The solution
+        </h2>
+
+        <p x-text="project.solution"></p>
+
+
+
+        <h2>
+          Key features
+        </h2>
+
+
+        <ul>
+
+          <template
+
+            x-for="feature in project.features"
+
+            :key="feature">
+
+            <li x-text="feature"></li>
+
+          </template>
+
+        </ul>
+
+
+
+        <h2>
+          Technology stack
+        </h2>
+
+
+        <div class="flex
+                    flex-wrap
+                    gap-1.5
+                    mb-6">
+
+
+          <template
+
+            x-for="tech in project.stack"
+
+            :key="tech">
+
+
+            <span
+
+              class="text-[11px]
+                     bg-zinc-100
+                     dark:bg-zinc-800
+                     text-zinc-600
+                     dark:text-zinc-400
+                     border
+                     border-zinc-200
+                     dark:border-zinc-700
+                     px-2.5
+                     py-1
+                     rounded-full"
+
+              x-text="tech">
+
+            </span>
+
+          </template>
+
+        </div>
+
+
+
+        <h2>
+          My contribution
+        </h2>
+
+        <p x-text="project.contribution"></p>
+
+
+
+        <h2>
+          Development approach
+        </h2>
+
+      </div>
+
+
+
+      <!-- ═══ PROCESS ═══ -->
+
+      <div
+
+        class="max-w-4xl
+               mx-auto
+               px-6
+               mb-12
+               sm:mb-16
+               section-pad">
+
+
+        <div class="space-y-3">
+
+
+          <template
+
+            x-for="(step,index) in project.process"
+
+            :key="step.title">
+
+
+            <div
+
+              class="reveal
+                     card-h
+                     process-card
+                     flex
+                     gap-4
+                     bg-zinc-50
+                     dark:bg-zinc-900
+                     rounded-2xl
+                     p-5
+                     border
+                     border-zinc-100
+                     dark:border-zinc-800">
+
+
+              <div
+
+                class="step-badge
+                       shrink-0
+                       mt-0.5"
+
+                x-text="index + 1">
+
+              </div>
+
+
+              <div>
+
+
+                <p class="font-display
+                          font-bold
+                          text-zinc-900
+                          dark:text-white
+                          mb-1"
+                   x-text="step.title">
+
+                </p>
+
+
+                <p class="text-sm
+                          text-zinc-500
+                          dark:text-zinc-400
+                          leading-relaxed"
+                   x-text="step.text">
+
+                </p>
+
+              </div>
+
+            </div>
+
+          </template>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ═══ LEARNING ═══ -->
+
+      <div
+
+        class="max-w-3xl
+               mx-auto
+               px-6
+               pb-16
+               prose-cs
+               section-pad">
+
+
+        <h2>
+          Challenges & learning
+        </h2>
+
+        <p x-text="project.learning"></p>
+
+
+
+        <h2>
+          What this project demonstrates
+        </h2>
+
+        <p x-text="project.demonstrates"></p>
+
+
+
+        <!-- Optional Links -->
+
+        <div class="mt-8
+                    flex
+                    flex-col
+                    sm:flex-row
+                    gap-3">
+
+
+          <template x-if="project.github">
+
+
+            <a
+
+              :href="project.github"
+
+              target="_blank"
+
+              rel="noopener noreferrer"
+
+              class="project-cta
+                     inline-flex
+                     items-center
+                     justify-center
+                     bg-zinc-900
+                     dark:bg-white
+                     text-white
+                     dark:text-zinc-900
+                     font-medium
+                     text-sm
+                     px-6
+                     py-3
+                     rounded-full">
+
+              GitHub Repository →
+
+            </a>
+
+          </template>
+
+
+
+          <template x-if="project.demo">
+
+
+            <a
+
+              :href="project.demo"
+
+              target="_blank"
+
+              rel="noopener noreferrer"
+
+              class="project-cta
+                     inline-flex
+                     items-center
+                     justify-center
+                     bg-accent
+                     text-white
+                     font-medium
+                     text-sm
+                     px-6
+                     py-3
+                     rounded-full">
+
+              Live Demo →
+
+            </a>
+
+          </template>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- ═══════════════════════════════════════
+         RELATED PROJECTS
+    ═══════════════════════════════════════ -->
+
+    <section
+
+      class="bg-zinc-50
+             dark:bg-zinc-900/50
+             py-14
+             sm:py-16">
+
+
+      <div
+
+        class="max-w-6xl
+               mx-auto
+               px-6
+               section-pad">
+
+
+        <div class="flex
+                    items-center
+                    justify-between
+                    gap-4
+                    mb-7">
+
+
+          <h2
+
+            class="font-display
+                   font-bold
+                   text-xl
+                   sm:text-2xl
+                   text-zinc-900
+                   dark:text-white">
+
+            More projects
+
+          </h2>
+
+
+          <a
+
+            href="projects.html"
+
+            class="text-sm
+                   font-medium
+                   text-accent
+                   nl">
+
+            View all →
+
+          </a>
+
+        </div>
+
+
+
+        <div
+
+          class="related-grid
+                 grid
+                 grid-cols-1
+                 md:grid-cols-3
+                 gap-4
+                 sm:gap-5">
+
+
+          <template
+
+            x-for="item in relatedProjects"
+
+            :key="item.slug">
+
+
+            <article
+
+              class="card-h
+                     group
+                     h-full
+                     flex
+                     flex-col
+                     bg-white
+                     dark:bg-zinc-900
+                     rounded-2xl
+                     overflow-hidden
+                     border
+                     border-zinc-100
+                     dark:border-zinc-800">
+
+
+              <!-- Cover -->
+
+              <a
+
+                :href="`case-study.html?project=${item.slug}`"
+
+                class="related-cover">
+
+                <picture class="block w-full h-full">
+                  <source type="image/webp" :srcset="item.image.replace('.png', '.webp')">
+                  <img
+                    :src="item.image"
+                    :alt="item.title"
+                    loading="lazy"
+                    width="1200"
+                    height="675"
+                    class="w-full h-full object-contain object-center">
+                </picture>
+
+              </a>
+
+
+
+              <!-- Content -->
+
+              <div
+
+                class="related-card-content
+                       p-4
+                       flex
+                       flex-col
+                       flex-1">
+
+
+                <p
+
+                  class="text-[10px]
+                         text-accent
+                         uppercase
+                         tracking-widest
+                         font-medium
+                         mb-2"
+
+                  x-text="item.category">
+
+                </p>
+
+
+
+                <a
+
+                  :href="`case-study.html?project=${item.slug}`">
+
+
+                  <h3
+
+                    class="font-display
+                           font-bold
+                           text-base
+                           text-zinc-900
+                           dark:text-white
+                           leading-tight
+                           mb-3
+                           group-hover:text-accent
+                           transition-colors"
+
+                    x-text="item.title">
+
+                  </h3>
+
+                </a>
+
+
+
+                <a
+
+                  :href="`case-study.html?project=${item.slug}`"
+
+                  class="text-xs
+                         sm:text-sm
+                         font-medium
+                         text-accent
+                         nl
+                         mt-auto">
+
+                  View project →
+
+                </a>
+
+              </div>
+
+            </article>
+
+          </template>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ═══════════════════════════════════════
+         CTA
+    ═══════════════════════════════════════ -->
+
+    <section class="py-16 sm:py-20">
+
+
+      <div
+
+        class="max-w-6xl
+               mx-auto
+               px-6
+               section-pad">
+
+
+        <div
+
+          class="bg-zinc-900
+                 dark:bg-zinc-800
+                 rounded-2xl
+                 sm:rounded-3xl
+                 px-6
+                 py-10
+                 sm:p-12
+                 text-center
+                 relative
+                 overflow-hidden">
+
+
+          <div
+
+            class="absolute
+                   top-0
+                   right-0
+                   w-64
+                   h-64
+                   bg-accent/20
+                   rounded-full
+                   blur-3xl">
+
+          </div>
+
+
+
+          <div class="relative z-10">
+
+
+            <p class="text-xs
+                      text-accent
+                      font-medium
+                      tracking-widest
+                      uppercase
+                      mb-3">
+
+              Let's connect
+
+            </p>
+
+
+            <h2
+
+              class="font-display
+                     font-bold
+                     text-2xl
+                     sm:text-3xl
+                     md:text-4xl
+                     text-white
+                     mb-4">
+
+              Interested in my work?
+
+            </h2>
+
+
+            <p
+
+              class="text-sm
+                     sm:text-base
+                     text-zinc-400
+                     max-w-md
+                     mx-auto
+                     mb-7">
+
+              I'm open to software development opportunities
+              and collaborative projects.
+
+            </p>
+
+
+            <a
+
+              href="index.html#contact"
+
+              class="inline-flex
+                     shimmer
+                     bg-accent
+                     text-white
+                     text-sm
+                     font-medium
+                     px-7
+                     py-3
+                     rounded-full
+                     hover:bg-accent-light">
+
+              Get in touch →
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+
+  <footer
+
+    class="border-t
+           border-zinc-100
+           dark:border-zinc-900
+           bg-white
+           dark:bg-zinc-950">
+
+
+    <div
+
+      class="max-w-6xl
+             mx-auto
+             px-4
+             sm:px-6
+             py-7
+             sm:py-8">
+
+      <div class="flex
+                  flex-col
+                  sm:flex-row
+                  items-center
+                  justify-between
+                  gap-5">
+
+        <p class="text-sm
+                  text-zinc-400
+                  text-center
+                  sm:text-left">
+
+          © <span id="yr"></span> Manoj Kumar S.
+          All rights reserved.
+
+        </p>
+
+        <div class="flex
+                    flex-wrap
+                    items-center
+                    justify-center
+                    gap-x-5
+                    gap-y-2
+                    text-xs
+                    sm:text-sm">
+
+          <a href="https://www.linkedin.com/in/manoj-kumar-s-182358350/"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="text-zinc-500
+                    dark:text-zinc-400
+                    hover:text-accent
+                    transition-colors">
+
+            LinkedIn
+
+          </a>
+
+          <a href="https://github.com/Manojkumar-77"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="text-zinc-500
+                    dark:text-zinc-400
+                    hover:text-accent
+                    transition-colors">
+
+            GitHub
+
+          </a>
+
+          <a href="mailto:manojkumarsdeveloper07@gmail.com"
+             class="text-zinc-500
+                    dark:text-zinc-400
+                    hover:text-accent
+                    transition-colors">
+
+            Email
+
+          </a>
+
+          <a href="#top"
+             aria-label="Back to top"
+             class="group
+                    inline-flex
+                    items-center
+                    gap-1.5
+                    text-zinc-500
+                    dark:text-zinc-400
+                    hover:text-accent
+                    transition-colors">
+
+            Back to top
+
+            <svg class="w-3.5
+                        h-3.5
+                        transition-transform
+                        duration-200
+                        group-hover:-translate-y-0.5"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke="currentColor"
+                 aria-hidden="true">
+
+              <path stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 15l7-7 7 7"/>
+
+            </svg>
+
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+
+
+  <!-- ═══════════════════════════════════════
+       PROJECT DATA
+  ═══════════════════════════════════════ -->
+
+  <script>
+
+    const PROJECTS = {
+
+
+
+      /* ═══════════════════════════════════════
+         SOCIAL MOOD MATCHER
+      ═══════════════════════════════════════ */
+
+      "social-mood-matcher":{
+
+        slug:"social-mood-matcher",
+
+        title:"Social Mood Matcher",
+
+        category:"AI / GenAI Project",
+
+        subtitle:
+          "An AI-powered social media caption and hashtag generator that analyzes uploaded images, understands mood and visual context, and creates platform-ready content.",
+
+        type:"AI Application",
+
+        role:"Developer",
+
+        year:"2026",
+
+        focus:"AI Content Generation",
+
+        image:
+          "assets/images/project/smm.png",
+
+
+        tags:[
+
+          "AI / GenAI",
+
+          "Python",
+
+          "Streamlit",
+
+          "BLIP",
+
+          "DistilBERT"
+
+        ],
+
+
+        stack:[
+
+          "Python",
+
+          "Streamlit",
+
+          "BLIP",
+
+          "DistilBERT",
+
+          "Transformers",
+
+          "Pillow",
+
+          "Gemini 2.5 Flash (Optional)"
+
+        ],
+
+
+        problemShort:
+          "Creating captions and finding suitable hashtags manually can be repetitive and time-consuming.",
+
+
+        solutionShort:
+          "Analyze an uploaded image, detect mood and context, then generate caption and hashtag suggestions automatically.",
+
+
+        outcomeShort:
+          "A single workflow for image understanding, mood detection and platform-aware social content generation.",
+
+
+        overview:
+          "Social Mood Matcher is an AI-powered content-generation application designed to simplify the process of creating social media captions and hashtags. The application accepts an uploaded image, analyzes its visual content and mood, and uses that context to generate captions in different writing styles.",
+
+
+        problem:
+          "Content creators often spend time deciding how to describe an image, choosing a suitable tone and researching hashtags. Different platforms also have different content limits and styles. The project was designed to combine these repetitive steps into one intelligent workflow.",
+
+
+        solution:
+          "The application combines image captioning and sentiment analysis to understand what is present in an image and how it feels. It then uses that information to generate relevant captions and hashtag suggestions. Streamlit provides the interactive interface, while BLIP and DistilBERT handle image understanding and sentiment analysis. An optional Gemini layer can be used for enhanced generation quality.",
+
+
+        features:[
+
+          "Image upload and visual context analysis",
+
+          "BLIP-based image captioning",
+
+          "DistilBERT-based mood and sentiment detection",
+
+          "Multiple caption styles including casual, aesthetic, professional and playful",
+
+          "Relevant hashtag generation based on context and sentiment",
+
+          "Platform-aware character limiting",
+
+          "Optional Gemini-enhanced content generation",
+
+          "Export-friendly generated content"
+
+        ],
+
+
+        contribution:
+          "I worked on the application structure, AI service integration, user interaction flow, generated-content presentation and the overall logic connecting image analysis, mood detection and caption generation.",
+
+
+        process:[
+
+
+          {
+
+            title:
+              "Project structure & environment",
+
+            text:
+              "Organized the application into reusable services and utilities, configured dependencies and prepared the application for local AI models and optional Gemini integration."
+
+          },
+
+
+          {
+
+            title:
+              "Image understanding",
+
+            text:
+              "Integrated image-captioning logic so uploaded images could be converted into meaningful visual descriptions."
+
+          },
+
+
+          {
+
+            title:
+              "Mood & sentiment analysis",
+
+            text:
+              "Connected sentiment analysis to the image-description pipeline so the application could classify mood and use it during generation."
+
+          },
+
+
+          {
+
+            title:
+              "Caption & hashtag generation",
+
+            text:
+              "Built the flow that combines detected context, selected writing style and target platform to create usable social content."
+
+          },
+
+
+          {
+
+            title:
+              "UI, validation & testing",
+
+            text:
+              "Designed the Streamlit interface, added controls and feedback, and tested uploads, generated content and platform-specific behavior."
+
+          }
+
+        ],
+
+
+        learning:
+          "This project helped me understand how multiple AI models can be connected into a practical user-facing workflow. It also improved my experience with model integration, caching, input validation, session state and designing an interface around AI-generated outputs.",
+
+
+        demonstrates:
+          "Practical AI integration, Python application development, image understanding, sentiment analysis, prompt-assisted generation and building a complete user-facing AI workflow.",
+
+
+        github:"",
+
+        demo:""
+
+      },
+
+
+
+      /* ═══════════════════════════════════════
+         PAYROLL
+      ═══════════════════════════════════════ */
+
+      "payroll":{
+
+        slug:"payroll",
+
+        title:"Payroll Management System",
+
+        category:"Full Stack Web Application",
+
+        subtitle:
+          "A Django-based payroll application for managing employees, attendance inputs, earnings, deductions and salary calculations.",
+
+        type:"Full Stack Application",
+
+        role:"Team Developer",
+
+        year:"2026",
+
+        focus:"Payroll Automation",
+
+        image:
+          "assets/images/project/pms.png",
+
+
+        tags:[
+
+          "Python",
+
+          "Django",
+
+          "JavaScript",
+
+          "PostgreSQL"
+
+        ],
+
+
+        stack:[
+
+          "Python",
+
+          "Django",
+
+          "JavaScript",
+
+          "Bootstrap 5",
+
+          "PostgreSQL",
+
+          "Django Admin"
+
+        ],
+
+
+        problemShort:
+          "Manual payroll calculations can become repetitive and error-prone when employee data, attendance and deductions are handled separately.",
+
+
+        solutionShort:
+          "Centralize employee records and payroll inputs, then calculate earnings, deductions and net salary from one application.",
+
+
+        outcomeShort:
+          "A structured payroll workflow with employee management, salary logic and printable payroll information.",
+
+
+        overview:
+          "The Payroll Management System is a web application created to simplify employee payroll administration. It stores employee and organizational data and provides payroll calculations using salary, allowances, deductions, working days and absence information.",
+
+
+        problem:
+          "Payroll requires multiple pieces of information to stay synchronized: employee data, salary structure, allowances, deductions and attendance. Handling these separately increases repetitive work and makes salary calculation harder to manage consistently.",
+
+
+        solution:
+          "The project uses Django models and administration features to organize departments, positions, employees and payroll records. Payroll calculations derive values such as total earnings, total deductions and net salary from the stored inputs.",
+
+
+        features:[
+
+          "Department and position management",
+
+          "Employee profile and salary management",
+
+          "Working-day and absence inputs",
+
+          "HRA, DA and other allowance handling",
+
+          "PF, advance and loan deductions",
+
+          "Loss-of-pay based on absence",
+
+          "Automatic total earnings and net salary calculations",
+
+          "Payroll reports and printable salary information"
+
+        ],
+
+
+        contribution:
+          "I contributed to the full-stack development of the application, including Django models, admin customization, salary-calculation logic, validation, testing and responsive interface improvements.",
+
+
+        process:[
+
+
+          {
+
+            title:
+              "Data modelling",
+
+            text:
+              "Structured departments, positions, employees and payroll information using related Django models."
+
+          },
+
+
+          {
+
+            title:
+              "Payroll logic",
+
+            text:
+              "Implemented salary calculations for earnings, deductions, absence-related loss of pay and net salary."
+
+          },
+
+
+          {
+
+            title:
+              "Admin customization",
+
+            text:
+              "Customized the Django administration interface to make employee and payroll operations easier to manage."
+
+          },
+
+
+          {
+
+            title:
+              "Reports & usability",
+
+            text:
+              "Added payroll summaries and report-oriented views while improving field organization and readability."
+
+          },
+
+
+          {
+
+            title:
+              "Testing & refinement",
+
+            text:
+              "Validated salary inputs, fixed model and admin issues and tested different payroll scenarios."
+
+          }
+
+        ],
+
+
+        learning:
+          "The project strengthened my understanding of Django relationships, validation, model properties, admin customization and translating business rules into application logic.",
+
+
+        demonstrates:
+          "Django full-stack development, relational data modelling, business-rule implementation, validation, debugging and practical payroll workflow design.",
+
+
+        github:"",
+
+        demo:""
+
+      },
+
+
+
+      /* ═══════════════════════════════════════
+         COLLEGE MEMORIES
+      ═══════════════════════════════════════ */
+
+      "college-memories":{
+
+        slug:"college-memories",
+
+        title:"College Memories Gallery",
+
+        category:"Gallery / CMS Project",
+
+        subtitle:
+          "A responsive digital memories platform for organizing photos, videos, timelines, events and yearbook-style content.",
+
+        type:"Content Management Platform",
+
+        role:"Developer",
+
+        year:"2026",
+
+        focus:"Responsive Media CMS",
+
+        image:
+          "assets/images/project/cm.png",
+
+
+        tags:[
+
+          "HTML5",
+
+          "CSS3",
+
+          "JavaScript",
+
+          "Node.js",
+
+          "SQLite"
+
+        ],
+
+
+        stack:[
+
+          "HTML5",
+
+          "CSS3",
+
+          "JavaScript",
+
+          "Node.js",
+
+          "Express",
+
+          "SQLite"
+
+        ],
+
+
+        problemShort:
+          "Large collections of college photos and videos become difficult to organize, browse and maintain as static files.",
+
+
+        solutionShort:
+          "Build a responsive gallery with categories, timelines, yearbook content and an admin workflow for managing media.",
+
+
+        outcomeShort:
+          "A personal digital archive that brings photos, videos and memories into one structured responsive experience.",
+
+
+        overview:
+          "College Memories Gallery is a responsive web project created to preserve and organize college memories in a more meaningful way than storing images in folders. The site combines gallery browsing, timeline content, video memories, scrapbook-style sections and yearbook profiles.",
+
+
+        problem:
+          "As the number of images and videos grows, ordinary folders become difficult to browse and provide no context around events, people or timelines. Updating a large static gallery manually can also become difficult.",
+
+
+        solution:
+          "The project organizes media into structured sections and categories while providing a simple content-management flow. A Node.js and Express backend supports the application, while SQLite stores structured content. The frontend focuses heavily on responsive gallery behavior and browsing usability.",
+
+
+        features:[
+
+          "Responsive photo gallery",
+
+          "Timeline-based memories",
+
+          "Video gallery",
+
+          "Yearbook profiles",
+
+          "Scrapbook-style content",
+
+          "Category-based filtering",
+
+          "Search and gallery browsing",
+
+          "Admin media management",
+
+          "Responsive layouts for mobile, tablet and desktop"
+
+        ],
+
+
+        contribution:
+          "I designed and developed the gallery experience, responsive layouts, content structure, admin workflows and the Node.js and Express integration used to manage media and site content.",
+
+
+        process:[
+
+
+          {
+
+            title:
+              "Content structure",
+
+            text:
+              "Separated memories into gallery, timeline, yearbook, video and scrapbook sections to make large collections easier to explore."
+
+          },
+
+
+          {
+
+            title:
+              "Responsive frontend",
+
+            text:
+              "Built layouts that adapt across mobile, tablet and desktop while preserving image quality and navigation usability."
+
+          },
+
+
+          {
+
+            title:
+              "Gallery interactions",
+
+            text:
+              "Added searching, filtering, modal viewing, categories and media-specific behaviors."
+
+          },
+
+
+          {
+
+            title:
+              "Admin management",
+
+            text:
+              "Created workflows for adding, editing, replacing and removing media without manually editing every page."
+
+          },
+
+
+          {
+
+            title:
+              "Backend & reliability",
+
+            text:
+              "Connected Express and SQLite, improved database handling and prepared the project for deployment-oriented use."
+
+          }
+
+        ],
+
+
+        learning:
+          "This project taught me how quickly media-heavy applications become complex. I gained experience with responsive image layouts, content organization, admin usability, SQLite write handling and designing a site that can grow beyond its initial dataset.",
+
+
+        demonstrates:
+          "Responsive web development, Node.js and Express integration, SQLite content management, gallery UX, media organization and building a maintainable multi-page project.",
+
+
+        github:"",
+
+        demo:""
+
+      },
+
+
+
+      /* ═══════════════════════════════════════
+         E-COMMERCE
+      ═══════════════════════════════════════ */
+
+      "ecommerce":{
+
+        slug:"ecommerce",
+
+        title:"E-Commerce Web Application",
+
+        category:"E-Commerce Project",
+
+        subtitle:
+          "A full-stack shopping application built around product browsing, cart management and database-driven product operations.",
+
+        type:"Academic Full Stack Project",
+
+        role:"Developer",
+
+        year:"2026",
+
+        focus:"Online Shopping Workflow",
+
+        image:
+          "assets/images/project/e-commerce.png",
+
+
+        tags:[
+
+          "Python",
+
+          "Django",
+
+          "JavaScript",
+
+          "SQLite"
+
+        ],
+
+
+        stack:[
+
+          "Python",
+
+          "Django",
+
+          "HTML5",
+
+          "CSS3",
+
+          "JavaScript",
+
+          "SQLite"
+
+        ],
+
+
+        problemShort:
+          "Online stores need a clear way to present products and maintain shopping interactions with persistent application data.",
+
+
+        solutionShort:
+          "Build a database-driven Django application for browsing products and managing basic shopping actions.",
+
+
+        outcomeShort:
+          "A complete academic e-commerce workflow connecting frontend browsing with Django-backed product data.",
+
+
+        overview:
+          "The E-Commerce Web Application is a full-stack academic project focused on the essential workflow of an online store. The project combines a user-facing product interface with server-side application logic and database-driven product information.",
+
+
+        problem:
+          "A useful shopping application needs more than static product cards. Product information, shopping actions and page behavior need to remain connected to application data while still providing a simple browsing experience.",
+
+
+        solution:
+          "The application uses Django to organize product data and application logic, with HTML, CSS and JavaScript providing the user-facing experience. The project focuses on product discovery and core shopping interactions.",
+
+
+        features:[
+
+          "Product browsing",
+
+          "Product detail presentation",
+
+          "Category-oriented product organization",
+
+          "Shopping cart workflow",
+
+          "Database-driven product information",
+
+          "Responsive frontend layout",
+
+          "Server-side application logic"
+
+        ],
+
+
+        contribution:
+          "I worked on the application structure, frontend pages, Django integration and the shopping workflow connecting product information with user interactions.",
+
+
+        process:[
+
+
+          {
+
+            title:
+              "Application planning",
+
+            text:
+              "Defined the core shopping flow and identified the main pages and data required by the application."
+
+          },
+
+
+          {
+
+            title:
+              "Product data",
+
+            text:
+              "Structured product information and connected it to Django views and templates."
+
+          },
+
+
+          {
+
+            title:
+              "Shopping interface",
+
+            text:
+              "Created product-listing and product-oriented interfaces with responsive layouts."
+
+          },
+
+
+          {
+
+            title:
+              "Cart workflow",
+
+            text:
+              "Connected shopping actions to the application flow so users could interact with selected products."
+
+          },
+
+
+          {
+
+            title:
+              "Testing",
+
+            text:
+              "Tested page navigation, product data rendering and the main shopping interactions."
+
+          }
+
+        ],
+
+
+        learning:
+          "The project strengthened my understanding of how frontend pages, backend logic and database data work together in a typical full-stack web application.",
+
+
+        demonstrates:
+          "Django application development, template rendering, database-backed web pages, responsive UI development and common e-commerce workflows.",
+
+
+        github:"",
+
+        demo:""
+
+      },
+
+
+
+      /* ═══════════════════════════════════════
+         EDUCATIONAL ORGANIZATION
+      ═══════════════════════════════════════ */
+
+      "education":{
+
+        slug:"education",
+
+        title:"Educational Organization Management System",
+
+        category:"ServiceNow Project",
+
+        subtitle:
+          "A ServiceNow-based educational administration project for managing student data, academic information and structured workflows.",
+
+        type:"Enterprise Workflow Application",
+
+        role:"Team Developer",
+
+        year:"2025",
+
+        focus:"Academic Administration",
+
+        image:
+          "assets/images/project/EOS-servicenow.png",
+
+
+        tags:[
+
+          "ServiceNow",
+
+          "Tables",
+
+          "Forms",
+
+          "Workflows"
+
+        ],
+
+
+        stack:[
+
+          "ServiceNow",
+
+          "Tables",
+
+          "Forms",
+
+          "Lists",
+
+          "Workflows"
+
+        ],
+
+
+        problemShort:
+          "Educational records and administrative requests can become difficult to maintain when information is scattered across separate processes.",
+
+
+        solutionShort:
+          "Organize educational data and administrative actions inside a structured ServiceNow application.",
+
+
+        outcomeShort:
+          "A workflow-oriented educational management application demonstrating enterprise platform concepts.",
+
+
+        overview:
+          "The Educational Organization Management System is a ServiceNow project designed around common educational administration requirements. It organizes information such as students and academic records while demonstrating how platform tables, forms and workflows can support structured operations.",
+
+
+        problem:
+          "Educational administration involves many repeated records and process steps. Without a structured system, information can be difficult to maintain consistently and administrative actions may not follow a clear workflow.",
+
+
+        solution:
+          "The project uses ServiceNow concepts such as tables, forms, lists and workflows to organize information and model administrative processes inside a single application.",
+
+
+        features:[
+
+          "Structured student information",
+
+          "Academic record organization",
+
+          "ServiceNow tables and relationships",
+
+          "Forms and lists",
+
+          "Administrative workflow logic",
+
+          "Record-management interface",
+
+          "Enterprise platform configuration"
+
+        ],
+
+
+        contribution:
+          "I contributed to the team project by working with ServiceNow application components, record structures, forms and workflow-oriented functionality.",
+
+
+        process:[
+
+
+          {
+
+            title:
+              "Requirement mapping",
+
+            text:
+              "Identified the educational records and administrative actions the application needed to represent."
+
+          },
+
+
+          {
+
+            title:
+              "Table design",
+
+            text:
+              "Created structured tables and fields for the information handled by the application."
+
+          },
+
+
+          {
+
+            title:
+              "Forms & lists",
+
+            text:
+              "Configured interfaces for creating, viewing and managing records."
+
+          },
+
+
+          {
+
+            title:
+              "Workflow setup",
+
+            text:
+              "Connected administrative actions to structured platform workflows."
+
+          },
+
+
+          {
+
+            title:
+              "Testing",
+
+            text:
+              "Checked record behavior and application flow across the main use cases."
+
+          }
+
+        ],
+
+
+        learning:
+          "This project introduced me to enterprise low-code platform development and helped me understand how structured records, forms and workflows can model real organizational processes.",
+
+
+        demonstrates:
+          "ServiceNow fundamentals, enterprise application structure, record management, workflow thinking and collaborative project development.",
+
+
+        github:"",
+
+        demo:""
+
+      }
+
+    };
+
+
+
+    /* ═══════════════════════════════════════
+       ALPINE
+    ═══════════════════════════════════════ */
+
+    function caseStudyApp(){
+
+      return {
+
+
+        dark:
+
+          localStorage.getItem('theme') === 'dark'
+
+          ||
+
+          (
+            !localStorage.getItem('theme')
+
+            &&
+
+            window.matchMedia(
+              '(prefers-color-scheme: dark)'
+            ).matches
+          ),
+
+
+        mobileMenu:false,
+
+        scrolled:false,
+
+        progress:0,
+
+
+        project:
+          PROJECTS["social-mood-matcher"],
+
+
+
+        init(){
+
+
+          /* Project from URL */
+
+          const params =
+            new URLSearchParams(
+              window.location.search
+            );
+
+
+          const requested =
+            params.get('project');
+
+
+          if(
+            requested
+            &&
+            PROJECTS[requested]
+          ){
+
+            this.project =
+              PROJECTS[requested];
+
+          }else if(requested){
+
+            window.location.replace('projects.html');
+            return;
+
+          }
+
+
+
+          /* Metadata */
+
+          this.updateMetadata();
+
+
+
+          /* Theme */
+
+          this.$watch(
+
+            'dark',
+
+            value => {
+
+              localStorage.setItem(
+
+                'theme',
+
+                value
+                  ? 'dark'
+                  : 'light'
+
+              );
+
+            }
+
+          );
+
+
+
+          /* Scroll */
+
+          const updateScroll = () => {
+
+
+            this.scrolled =
+              window.scrollY > 20;
+
+
+            const scrollable =
+
+              document.documentElement.scrollHeight
+
+              -
+
+              window.innerHeight;
+
+
+            this.progress =
+
+              scrollable > 0
+
+              ?
+
+              Math.min(
+
+                100,
+
+                (
+                  window.scrollY
+                  /
+                  scrollable
+                ) * 100
+
+              )
+
+              :
+
+              0;
+
+          };
+
+
+          window.addEventListener(
+
+            'scroll',
+
+            updateScroll,
+
+            {
+              passive:true
+            }
+
+          );
+
+
+          updateScroll();
+
+
+
+          /* Resize */
+
+          window.addEventListener(
+
+            'resize',
+
+            () => {
+
+              if(
+                window.innerWidth >= 768
+              ){
+
+                this.mobileMenu = false;
+
+              }
+
+            },
+
+            {
+              passive:true
+            }
+
+          );
+
+
+
+          this.$nextTick(() => {
+
+
+            /* Reveal */
+
+            const observer =
+
+              new IntersectionObserver(
+
+                entries => {
+
+                  entries.forEach(
+
+                    entry => {
+
+                      if(
+                        entry.isIntersecting
+                      ){
+
+                        entry.target
+                          .classList
+                          .add('visible');
+
+
+                        observer
+                          .unobserve(
+                            entry.target
+                          );
+
+                      }
+
+                    }
+
+                  );
+
+                },
+
+                {
+
+                  threshold:.08,
+
+                  rootMargin:
+                    '0px 0px -30px 0px'
+
+                }
+
+              );
+
+
+            document
+              .querySelectorAll('.reveal')
+              .forEach(
+
+                el => {
+
+                  observer
+                    .observe(el);
+
+                }
+
+              );
+
+
+
+            /* Touch feedback */
+
+            document
+              .querySelectorAll('.card-h')
+              .forEach(
+
+                card => {
+
+
+                  const activate = () => {
+
+
+                    card
+                      .classList
+                      .add(
+                        'touch-active'
+                      );
+
+
+                    clearTimeout(
+                      card._touchTimer
+                    );
+
+
+                    card._touchTimer =
+
+                      setTimeout(
+
+                        () => {
+
+                          card
+                            .classList
+                            .remove(
+                              'touch-active'
+                            );
+
+                        },
+
+                        380
+
+                      );
+
+                  };
+
+
+                  card.addEventListener(
+
+                    'touchstart',
+
+                    activate,
+
+                    {
+                      passive:true
+                    }
+
+                  );
+
+                }
+
+              );
+
+          });
+
+
+
+          document
+            .getElementById('yr')
+            .textContent =
+              new Date().getFullYear();
+
+        },
+
+
+
+        updateMetadata(){
+
+
+          const title =
+
+            `${this.project.title} | Case Study | Manoj Kumar S`;
+
+
+          document.title =
+            title;
+
+
+          document
+            .getElementById(
+              'metaDescription'
+            )
+            .setAttribute(
+
+              'content',
+
+              this.project.subtitle
+
+            );
+
+
+          document
+            .getElementById(
+              'ogTitle'
+            )
+            .setAttribute(
+
+              'content',
+
+              title
+
+            );
+
+
+          document
+            .getElementById(
+              'ogDescription'
+            )
+            .setAttribute(
+
+              'content',
+
+              this.project.subtitle
+
+            );
+
+        },
+
+
+
+        get relatedProjects(){
+
+
+          return Object
+            .values(PROJECTS)
+
+            .filter(
+
+              item =>
+                item.slug !==
+                this.project.slug
+
+            )
+
+            .slice(
+              0,
+              3
+            );
+
+        }
+
+      };
+
+    }
+
+  </script>
+
+
+</body>
+
+</html>
