@@ -193,7 +193,7 @@ assets/images/og-cover.jpg
 
 This portfolio is designed for static hosting and can be deployed using GitHub Pages or another static hosting provider.
 
-After deployment, replace every instance of `YOUR_DEPLOYED_PORTFOLIO_URL` across the following files with the actual live URL:
+After deployment, replace every instance of `https://manojkumar-77.github.io/Manoj-Portfolio` across the following files with the actual live URL:
 
 ```text
 index.html

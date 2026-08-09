@@ -1,8 +1,8 @@
 # robots.txt — Manoj Kumar S Portfolio
-# Replace YOUR_DEPLOYED_PORTFOLIO_URL with the actual production URL after deployment.
+# Replace https://manojkumar-77.github.io/Manoj-Portfolio with the actual production URL after deployment.
 
 User-agent: *
 Allow: /
 
 # Sitemap location — update URL after deployment
-Sitemap: YOUR_DEPLOYED_PORTFOLIO_URL/sitemap.xml
+Sitemap: https://manojkumar-77.github.io/Manoj-Portfolio/sitemap.xml
