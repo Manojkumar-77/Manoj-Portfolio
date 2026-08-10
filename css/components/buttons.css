@@ -1,0 +1,29 @@
+/**
+ * css/components/buttons.css
+ * ─────────────────────────────────────────
+ * Shared button styles used across the portfolio.
+ * The shimmer effect lives in animations.css.
+ */
+
+/* ════════════════════════════════════════════
+   BASE BUTTON RESETS
+════════════════════════════════════════════ */
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ════════════════════════════════════════════
+   PROJECT CTA (case-study page)
+════════════════════════════════════════════ */
+.project-cta {
+  /* Used inline with Tailwind utilities on case-study.html */
+  /* Responsive full-width on mobile */
+}
+
+@media (max-width: 639px) {
+  .project-cta {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,247 +1,128 @@
-# Manoj Kumar S — Developer Portfolio
+# Manoj Kumar S — Developer Portfolio (V2 Architecture)
 
-A modern, responsive personal developer portfolio showcasing my projects, technical skills, services, internship experience and contact information.
+A modern, responsive personal developer portfolio showcasing projects, technical skills, services, certificates, internship experience and contact information.
 
-The portfolio is built as a lightweight static website using HTML, Tailwind CSS, JavaScript and Alpine.js, with a premium charcoal, graphite and orange visual design.
+The portfolio is built as a modular static website using HTML5, Tailwind CSS, JavaScript (ES6+), Alpine.js, and clean CSS/JS separation. Designed for maximum maintainability and zero build tools — 100% compatible with GitHub Pages.
 
-## Features
+> **Performance Note**: Homepage project cards on `index.html` are intentionally rendered as static HTML to optimize initial load, Cumulative Layout Shift (CLS), and Largest Contentful Paint (LCP) performance, while `projects.html` and `case-study.html` dynamically draw from the canonical dataset in `data/projects.js`.
+>
+> **State Ownership Note**: Theme state (`dark`) and navigation state (`mm`, `sc`, active section `s`) are reactively managed by Alpine.js (`x-data="app()"`, `x-data="projectsApp()"`, `x-data="caseStudyApp()"`) for instant reactive UI updates without external framework overhead.
 
-- Fully responsive design for mobile, tablet, laptop and desktop
-- Dark and light mode support
-- Smooth navigation and section highlighting
-- Responsive mobile navigation
-- Services showcase
-- Selected project showcase
-- Dedicated projects page
-- Detailed project case studies
-- About and technical skills section
-- Internship experience section
-- Resume access
-- Contact form with client-side validation
-- Contact form submission without leaving the portfolio
-- Success and error notification UI
-- Optimized WebP image assets
-- Lazy-loaded project images
-- SEO and social sharing metadata
-- Custom favicon and social preview image
-- Accessible and semantic HTML structure
+---
 
-## Portfolio Sections
+## ⚡ Quick Edit Guide
 
-- Hero
-- Services
-- Selected Projects
-- About Me
-- Skills & Tools
-- Internship Experience
-- Contact
+The portfolio is architected so future content edits **never require wading through thousands of lines of HTML**. All editable data lives in `data/`.
 
-## Featured Projects
+| Task | File to Edit | Asset Location |
+|---|---|---|
+| **Change personal info / links** | `data/site-config.js` | — |
+| **Add / edit project** | `data/projects.js` | `assets/images/project/` |
+| **Add / edit certificate** | `data/certificates.js` | `assets/certificates/` |
+| **Change tech stack skills** | `data/skills.js` | — |
+| **Change experience / internships** | `data/experience.js` | — |
+| **Global base styles** | `css/main.css` | — |
+| **Responsive breakpoints** | `css/responsive.css` | — |
+| **Page-specific styling** | `css/pages/` (`index.css`, `projects.css`, `case-study.css`, `404.css`) | — |
+| **Card / tag hover styles** | `css/components/cards.css` | — |
+| **Certificates lightbox modal** | `css/components/certificates.css` & `js/components/certificates.js` | — |
+| **Navigation behavior** | Alpine `x-data` / `js/components/navigation.js` | `css/components/header.css` |
+| **Theme (Dark / Light)** | Alpine `x-data` / `js/components/theme.js` | — |
+| **Contact form logic** | `js/features/contact.js` | — |
+| **Animations & Scroll Reveal** | `css/animations.css` & `js/features/animations.js` | — |
 
-1. Social Mood Matcher
-2. Payroll Management System
-3. College Memories Gallery
-4. E-Commerce Web Application
-5. Educational Organization Management System
+---
 
-## Technologies
-
-### Frontend
-
-- HTML5
-- CSS3
-- JavaScript
-- Tailwind CSS (CDN — browser runtime)
-- Alpine.js 3.14.8 (CDN — pinned version)
-
-### Backend & Programming
-
-- Python
-- Django
-
-### Database
-
-- MySQL
-- SQLite
-
-### Tools & Platforms
-
-- Git
-- GitHub
-- VS Code
-- ServiceNow
-
-## Project Structure
+## 📁 Modular Project Structure
 
 ```text
-folio-tailwind-1.0.0/
+Manoj-Portfolio/
 │
-├── assets/
-│   ├── favicon/
-│   │   ├── apple-touch-icon.png
-│   │   ├── favicon-32x32.png
-│   │   └── favicon.svg
-│   ├── images/
-│   │   ├── casual.jpeg          # Hero portrait
-│   │   ├── professional.jpeg    # About section portrait
-│   │   ├── og-cover.jpg         # Social preview (1200×630)
-│   │   └── project/
-│   │       ├── cm.png / cm.webp
-│   │       ├── e-commerce.png / e-commerce.webp
-│   │       ├── EOS-servicenow.png / EOS-servicenow.webp
-│   │       ├── pms.png / pms.webp
-│   │       └── smm.png / smm.webp
-│   └── resume/
-│       └── Manoj-Resume.pdf
+├── index.html                         # Homepage (Hero → Services → Work → Certificates → Tech Stack → About → Experience → Contact)
+├── projects.html                      # All Projects page with interactive filters
+├── case-study.html                    # Dynamic Case Study view (?project=<slug>)
+├── 404.html                           # Custom 404 error page
+├── robots.txt                         # SEO crawler rules
+├── sitemap.xml                        # XML sitemap
+├── README.md                          # Documentation & Quick Edit Guide
 │
-├── index.html       # Main portfolio page
-├── projects.html    # Full project gallery
-├── case-study.html  # Project case-study view (query-param driven)
-├── 404.html         # Custom 404 error page
-├── robots.txt       # Crawler permissions
-├── sitemap.xml      # XML sitemap for SEO
-└── README.md
+├── components/                        # Canonical reference HTML templates
+│   ├── header.html                    # Shared header template
+│   └── footer.html                    # Shared footer template
+│
+├── data/                              # Canonical Single Source of Truth Data
+│   ├── site-config.js                 # Global config (name, title, contact, socials)
+│   ├── projects.js                    # All 5 projects full canonical data
+│   ├── certificates.js                # All 12 certificates metadata
+│   ├── skills.js                      # Categorized tech stack skills
+│   └── experience.js                  # Internship experiences data
+│
+├── css/                               # Modular CSS Architecture
+│   ├── main.css                       # Reset, typography, custom properties, noise texture, scrollbar
+│   ├── animations.css                 # Scroll reveal (.reveal), shimmer, delays, reduced-motion
+│   ├── responsive.css                 # Global responsive media queries
+│   ├── components/                    # Component CSS
+│   │   ├── header.css
+│   │   ├── footer.css
+│   │   ├── buttons.css
+│   │   ├── cards.css
+│   │   └── certificates.css
+│   └── pages/                         # Page-specific CSS
+│       ├── index.css
+│       ├── projects.css
+│       ├── case-study.css
+│       └── 404.css
+│
+├── js/                                # Modular JS Architecture
+│   ├── main.js                        # Shared initialization (year, touch, reveal)
+│   ├── components/                    # UI Component logic
+│   │   ├── navigation.js              # Nav scroll state & mobile menu listener
+│   │   ├── theme.js                   # Dark / light theme helper
+│   │   └── certificates.js            # Certificate cards & PDF lightbox manager
+│   ├── features/                      # Application feature modules
+│   │   ├── animations.js              # IntersectionObserver reveal & touch feedback
+│   │   ├── contact.js                 # Contact form submission, honeypot & toast
+│   │   ├── projects.js                # Projects filter & dataset logic
+│   │   ├── certificates.js            # Certificates feature wrapper
+│   │   └── case-study.js              # Dynamic query resolver & case-study state
+│   ├── pages/                         # Page entry point initializers
+│   │   ├── home.js
+│   │   ├── projects-page.js
+│   │   └── case-study-page.js
+│   └── utils/                         # Utilities
+│       └── helpers.js                 # Shared helpers (escape HTML, query params, year)
+│
+└── assets/
+    ├── favicon/                       # Favicon PNG / SVG / Apple Touch Icon
+    ├── images/
+    │   ├── casual.jpeg                # Hero portrait
+    │   ├── professional.jpeg          # About section portrait
+    │   ├── og-cover.jpg               # Social preview (1200×630)
+    │   └── project/                   # Project cover images (PNG & WebP)
+    ├── certificates/                  # 12 real PDF certificate documents
+    └── resume/                        # Manoj-Resume.pdf
 ```
 
-## Pages
+---
 
-### `index.html`
+## 🏛️ Shared Component Strategy
 
-Main portfolio page containing the hero section, services, selected projects, about section, technical skills, internship experience and contact section.
+To guarantee **100% reliability on GitHub Pages** and avoid Flash of Unstyled Content (FOUC) or CORS restrictions during local `file://` testing:
+- Header and footer markup blocks are rendered as static, zero-latency HTML components inside each main page.
+- Canonical reference files (`components/header.html` and `components/footer.html`) are maintained as the single source of structural truth.
 
-### `projects.html`
+---
 
-Dedicated project showcase containing the complete collection of featured development projects.
+## 🚀 Local Usage & Deployment
 
-### `case-study.html`
+### Local Testing
+No build step, Node.js server, Python virtualenv, or bundler is required.
+Open `index.html` directly in any web browser, or use VS Code Live Server.
 
-Detailed project case-study view presenting project information, technologies, features and development details.
+### GitHub Pages Deployment
+Deployed target: `https://manojkumar-77.github.io/Manoj-Portfolio/`
 
-## Local Usage
-
-Clone or download the repository and open:
-
-```text
-index.html
-```
-
-directly in a modern web browser.
-
-For development and local testing, VS Code Live Server can also be used.
-
-No Python environment, package installation, database or local backend server is required to run the portfolio itself.
-
-## Contact Form
-
-The portfolio includes a contact form with:
-
-- Name validation
-- Email validation
-- Message validation
-- Submission status handling
-- Success notifications
-- Error notifications
-- Responsive notification UI
-
-Messages can be submitted directly from the portfolio without redirecting visitors away from the website.
-
-The form uses Google Apps Script as a serverless endpoint with `no-cors` mode. Because no-cors prevents response inspection, the form optimistically shows a success notification after submission. Network errors are caught and surfaced with a direct email fallback.
-
-## Responsive Design
-
-The portfolio is designed to work across:
-
-- Mobile phones
-- Tablets
-- Laptops
-- Desktop monitors
-- Large displays
-
-Layouts, navigation, typography, project cards and interactive elements adapt according to the available screen size.
-
-## Performance
-
-The portfolio uses performance-focused techniques including:
-
-- WebP project images
-- Responsive image sizing
-- Lazy loading
-- Lightweight static pages
-- Minimal external dependencies
-- Optimized visual assets
-
-## SEO & Social Sharing
-
-The main pages include metadata for search engines and social sharing.
-
-This includes:
-
-- Page titles
-- Meta descriptions
-- Canonical URLs
-- Open Graph metadata
-- Social preview image
-- Favicon assets
-
-The social preview image is located at:
-
-```text
-assets/images/og-cover.jpg
-```
-
-## Deployment
-
-This portfolio is designed for static hosting and can be deployed using GitHub Pages or another static hosting provider.
-
-After deployment, replace every instance of `https://manojkumar-77.github.io/Manoj-Portfolio` across the following files with the actual live URL:
-
-```text
-index.html
-projects.html
-case-study.html
-robots.txt
-sitemap.xml
-```
-
-Also update the `url` field inside the JSON-LD structured data block in `index.html`.
-
-Example replacement value:
-
-```text
-https://manojkumar-77.github.io/your-repository
-```
-
-## Production Hardening (Applied)
-
-- Alpine.js pinned to exact version `3.14.8` (all pages)
-- Invalid case-study URL slugs redirect to `projects.html`
-- Filter buttons include `type="button"` and `aria-pressed` for accessibility
-- Hero image uses `fetchpriority="high"` for LCP optimization
-- All images have explicit intrinsic `width`/`height` to eliminate CLS
-- `robots.txt` and `sitemap.xml` created for SEO
-- Custom `404.html` matching portfolio design
-- JSON-LD `Person` + `WebSite` structured data added to homepage
-- All external `target="_blank"` links include `rel="noopener noreferrer"`
-- No debug `console.log` or `alert()` statements in production code
-- Back-to-top anchors use stable `id="top"` page target
-
-## Contact
-
-- Email: [manojkumarsdeveloper07@gmail.com](mailto:manojkumarsdeveloper07@gmail.com)
-- LinkedIn: [Manoj Kumar S](https://www.linkedin.com/in/manoj-kumar-s-182358350/)
-- GitHub: [Manojkumar-77](https://github.com/Manojkumar-77)
-
-## Credits & Attribution
-
-This portfolio is based on an existing frontend template and has been customized and extended for personal portfolio use, including modifications to its content, project presentation, responsive behavior, contact experience, accessibility, performance and overall interface.
-
-Any original template or third-party assets remain subject to their respective license terms.
-
-## License
-
-This repository is intended for personal portfolio use.
-
-Any third-party libraries, template components, fonts, icons or other external resources included in the project remain subject to their respective licenses.
+All relative asset links (`css/`, `js/`, `data/`, `assets/`) use relative paths to ensure flawless sub-directory hosting under `/Manoj-Portfolio/`.
 
 ---
 

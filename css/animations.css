@@ -1,0 +1,112 @@
+/**
+ * css/animations.css
+ * ─────────────────────────────────────────
+ * All animation and transition utilities.
+ *
+ * Includes:
+ *   - Reveal on scroll (.reveal / .in)
+ *   - Stagger delays (.d1–.d4)
+ *   - Shimmer button effect
+ *   - Card hover system (.card-h / .stag)
+ *   - Prefers-reduced-motion override
+ */
+
+/* ════════════════════════════════════════════
+   REVEAL ON SCROLL
+════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity .6s cubic-bezier(.4,0,.2,1),
+              transform .6s cubic-bezier(.4,0,.2,1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger delays */
+.d1 { transition-delay: .08s; }
+.d2 { transition-delay: .16s; }
+.d3 { transition-delay: .24s; }
+.d4 { transition-delay: .32s; }
+
+/* projects.html uses .visible instead of .in */
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ════════════════════════════════════════════
+   NAV UNDERLINE ANIMATION
+════════════════════════════════════════════ */
+.nl {
+  position: relative;
+}
+
+.nl::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: currentColor;
+  transition: width .22s cubic-bezier(.4,0,.2,1);
+}
+
+.nl:hover::after,
+.nl.on::after {
+  width: 100%;
+}
+
+.nl.on {
+  font-weight: 500;
+}
+
+/* ════════════════════════════════════════════
+   SHIMMER BUTTON EFFECT
+════════════════════════════════════════════ */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: rgba(255,255,255,.18);
+  transform: skewX(-20deg);
+  transition: left .4s cubic-bezier(.4,0,.2,1);
+}
+
+.shimmer:hover::after {
+  left: 160%;
+}
+
+/* ════════════════════════════════════════════
+   PREFERS-REDUCED-MOTION
+════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

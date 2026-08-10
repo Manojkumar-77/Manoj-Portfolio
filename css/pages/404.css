@@ -1,0 +1,12 @@
+/**
+ * css/pages/404.css
+ * ─────────────────────────────────────────
+ * Page-specific CSS for 404.html.
+ */
+
+.error-404-num {
+  font-family: 'PT Sans', sans-serif;
+  font-size: clamp(6rem, 20vw, 10rem);
+  line-height: 1;
+  user-select: none;
+}

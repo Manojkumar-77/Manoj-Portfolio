@@ -1,0 +1,63 @@
+/**
+ * css/pages/index.css
+ * ─────────────────────────────────────────
+ * Page-specific CSS for index.html (Homepage).
+ */
+
+/* Tech Stack category labels */
+.skill-cat-label {
+  font-size: .68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: #a1a1aa;
+  margin-bottom: .65rem;
+}
+
+.dark .skill-cat-label {
+  color: #71717a;
+}
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: .8rem;
+  font-weight: 500;
+  padding: .4rem .9rem;
+  border-radius: 99px;
+  border: 1px solid #e4e4e7;
+  background: #fff;
+  color: #3f3f46;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease, color .2s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  cursor: pointer;
+}
+
+.dark .skill-tag {
+  background: #18181b;
+  border-color: #27272a;
+  color: #d4d4d8;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .skill-tag:hover {
+    transform: translateY(-2px);
+    border-color: #FF6B2B !important;
+    color: #FF6B2B !important;
+    box-shadow: 0 0 12px rgba(255,107,43,.35);
+  }
+}
+
+.skill-tag.tech-active {
+  transform: translateY(-2px);
+  border-color: #FF6B2B !important;
+  color: #FF6B2B !important;
+  box-shadow: 0 0 12px rgba(255,107,43,.35) !important;
+}
+
+.dark .skill-tag.tech-active {
+  border-color: #FF6B2B !important;
+  color: #FF6B2B !important;
+  box-shadow: 0 0 12px rgba(255,107,43,.35) !important;
+}

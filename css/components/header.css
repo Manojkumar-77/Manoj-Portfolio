@@ -1,0 +1,12 @@
+/**
+ * css/components/header.css
+ * ─────────────────────────────────────────
+ * Navigation header styles (nav underline handled in animations.css).
+ * The header uses Tailwind utility classes primarily;
+ * only custom overrides that can't be expressed in Tailwind live here.
+ */
+
+/* Home nav active state label */
+.nl.on {
+  font-weight: 500;
+}

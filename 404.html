@@ -5,13 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Page not found — Manoj Kumar S Portfolio">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg">
+<link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
 <title>404 — Page Not Found | Manoj Kumar S</title>
 
+<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Alpine JS -->
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+
+<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
@@ -21,64 +26,20 @@
     darkMode: 'class',
     theme: {
       extend: {
-        fontFamily: {
-          display: ['PT Sans', 'sans-serif'],
-          body:    ['DM Sans', 'sans-serif']
-        },
-        colors: {
-          accent: '#FF6B2B',
-          'accent-light': '#FF8F5C'
-        }
+        fontFamily: { display: ['PT Sans', 'sans-serif'], body: ['DM Sans', 'sans-serif'] },
+        colors: { accent: '#FF6B2B', 'accent-light': '#FF8F5C' }
       }
     }
   }
 </script>
 
-<style>
-  *,*::before,*::after { box-sizing: border-box }
-  html, body { font-family: 'DM Sans', sans-serif }
-  h1, h2, h3 { font-family: 'PT Sans', sans-serif }
-  body { transition: background-color .3s, color .3s }
-
-  /* noise overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    opacity: .35;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
-  }
-
-  ::-webkit-scrollbar { width: 5px }
-  ::-webkit-scrollbar-track { background: transparent }
-  ::-webkit-scrollbar-thumb { background: #FF6B2B; border-radius: 99px }
-
-  .shimmer { position: relative; overflow: hidden }
-  .shimmer::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 60%; height: 100%;
-    background: rgba(255,255,255,.18);
-    transform: skewX(-20deg);
-    transition: left .4s cubic-bezier(.4,0,.2,1);
-  }
-  .shimmer:hover::after { left: 160% }
-
-  a:focus-visible, button:focus-visible {
-    outline: 2px solid #FF6B2B;
-    outline-offset: 3px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: .01ms !important;
-      transition-duration: .01ms !important;
-    }
-  }
-</style>
+<!-- V2 Architecture CSS -->
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/components/buttons.css">
+<link rel="stylesheet" href="css/components/header.css">
+<link rel="stylesheet" href="css/components/footer.css">
+<link rel="stylesheet" href="css/pages/404.css">
 </head>
 
 <body x-data="{ dark: localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches) }"
@@ -91,8 +52,7 @@
     <a href="index.html" class="font-display font-bold text-xl tracking-tight">
       <span class="text-zinc-900 dark:text-white">MJ</span><span class="text-accent">S</span>
     </a>
-    <a href="index.html"
-       class="shimmer inline-flex items-center gap-2 bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">
+    <a href="index.html" class="shimmer inline-flex items-center gap-2 bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">
       Go Home
     </a>
   </nav>
@@ -101,9 +61,7 @@
 <!-- MAIN -->
 <main class="flex-1 flex items-center justify-center relative z-10 pt-16">
   <div class="text-center px-6 py-24 max-w-lg mx-auto">
-
-    <!-- 404 accent number -->
-    <p class="font-display font-bold text-[8rem] sm:text-[10rem] leading-none text-accent/15 dark:text-accent/10 select-none mb-0" aria-hidden="true">
+    <p class="font-display font-bold text-[8rem] sm:text-[10rem] leading-none text-accent/15 dark:text-accent/10 select-none mb-0 error-404-num" aria-hidden="true">
       404
     </p>
 
@@ -117,19 +75,16 @@
     </p>
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-      <a href="index.html"
-         class="shimmer inline-flex items-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors text-sm w-full sm:w-auto justify-center">
+      <a href="index.html" class="shimmer inline-flex items-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors text-sm w-full sm:w-auto justify-center">
         Back to Home
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
         </svg>
       </a>
-      <a href="projects.html"
-         class="inline-flex items-center gap-2 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors text-sm w-full sm:w-auto justify-center">
+      <a href="projects.html" class="inline-flex items-center gap-2 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors text-sm w-full sm:w-auto justify-center">
         View Projects
       </a>
     </div>
-
   </div>
 </main>
 
@@ -142,8 +97,9 @@
   </div>
 </footer>
 
+<script src="js/utils/helpers.js"></script>
 <script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
+  if (window.AppHelpers) window.AppHelpers.setCopyrightYear('yr');
 </script>
 
 </body>

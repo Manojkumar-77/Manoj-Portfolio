@@ -1,0 +1,251 @@
+/**
+ * css/responsive.css
+ * ─────────────────────────────────────────
+ * Responsive overrides for all breakpoints.
+ * Covers global section spacing and shared component behavior.
+ *
+ * Page-specific responsive rules are co-located in their page CSS
+ * or component CSS only where they are not covered here.
+ */
+
+/* ════════════════════════════════════════════
+   MOBILE — max 639px
+════════════════════════════════════════════ */
+@media (max-width: 639px) {
+
+  /* Section scroll offset */
+  section {
+    scroll-margin-top: 72px;
+  }
+
+  /* Scroll margin for named sections */
+  #services,
+  #work,
+  #certificates,
+  #tech-stack,
+  #about,
+  #experience,
+  #contact {
+    scroll-margin-top: 76px;
+  }
+
+  /* Hero */
+  #hero {
+    min-height: auto;
+  }
+
+  #hero > div.relative {
+    padding-top: 5.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  #hero h1 {
+    font-size: clamp(2.75rem, 13vw, 4rem);
+    line-height: 1.02;
+  }
+
+  #hero .grid {
+    gap: 2.5rem;
+  }
+
+  #hero .reveal.d3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: .75rem;
+  }
+
+  #hero .reveal.d3 > a {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
+
+  #hero .reveal.d4 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  #hero .reveal.d4 > div:last-child {
+    grid-column: 1 / -1;
+  }
+
+  #hero .pf {
+    border-radius: 1.25rem;
+  }
+
+  /* Section padding */
+  #services,
+  #work,
+  #about,
+  #experience,
+  #contact {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  /* Section headings */
+  #services h2,
+  #work h2,
+  #about h2,
+  #experience h2,
+  #contact h2 {
+    font-size: clamp(2.1rem, 10vw, 3rem);
+  }
+
+  /* About */
+  #about .grid {
+    gap: 2.75rem;
+  }
+
+  #about .pf {
+    max-width: 18rem;
+  }
+
+  #about [aria-label="Skills"] {
+    gap: .55rem;
+  }
+
+  .stag {
+    font-size: .78rem;
+    padding: .42rem .75rem;
+  }
+
+  /* Experience */
+  #experience article {
+    padding: 1.5rem;
+  }
+
+  #experience article h3 {
+    font-size: 1.35rem;
+    line-height: 1.2;
+  }
+
+  /* Contact */
+  #contact > div > div {
+    padding: 1.5rem;
+    border-radius: 1.25rem;
+  }
+
+  #contact .grid {
+    gap: 2.5rem;
+  }
+
+  #contact a {
+    min-width: 0;
+  }
+
+  #contact a > span:last-child {
+    min-width: 0;
+    word-break: break-word;
+  }
+
+  #contact input,
+  #contact textarea {
+    font-size: 16px; /* prevents iOS zoom */
+  }
+
+  /* Mobile menu constraints */
+  header [x-show="mm"] {
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  header [x-show="mm"] a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* ════════════════════════════════════════════
+   VERY SMALL — max 390px
+════════════════════════════════════════════ */
+@media (max-width: 390px) {
+  nav {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  #hero > div.relative,
+  #services > div,
+  #work > div,
+  #about > div,
+  #experience > div,
+  #contact > div {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  #hero .reveal.d4 {
+    grid-template-columns: 1fr;
+  }
+
+  #hero .reveal.d4 > div:last-child {
+    grid-column: auto;
+  }
+}
+
+/* ════════════════════════════════════════════
+   TABLET — 640px to 1023px
+════════════════════════════════════════════ */
+@media (min-width: 640px) and (max-width: 1023px) {
+  section {
+    scroll-margin-top: 80px;
+  }
+
+  #hero > div.relative {
+    padding-top: 7rem;
+    padding-bottom: 6rem;
+  }
+
+  #hero .grid {
+    gap: 3rem;
+  }
+
+  #experience article {
+    padding: 1.75rem;
+  }
+
+  #contact > div > div {
+    padding: 2.5rem;
+  }
+}
+
+/* ════════════════════════════════════════════
+   CERTIFICATES — responsive
+════════════════════════════════════════════ */
+@media (max-width: 639px) {
+  #certificates .cert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-modal-inner {
+    padding: 1.25rem;
+    border-radius: 1rem;
+  }
+
+  .cert-modal-inner embed,
+  .cert-modal-inner iframe {
+    height: 70vw;
+    min-height: 260px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  #certificates .cert-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ════════════════════════════════════════════
+   TECH STACK — responsive
+════════════════════════════════════════════ */
+@media (max-width: 639px) {
+  #tech-stack .skill-tag {
+    font-size: .75rem;
+    padding: .35rem .7rem;
+  }
+}

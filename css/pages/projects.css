@@ -1,0 +1,156 @@
+/**
+ * css/pages/projects.css
+ * ─────────────────────────────────────────
+ * Page-specific CSS for projects.html.
+ */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.project-card {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform .25s cubic-bezier(.4,0,.2,1),
+              border-color .22s ease,
+              box-shadow .22s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.project-cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0D0F12;
+}
+
+.project-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  -webkit-user-drag: none;
+  user-select: none;
+  transition: transform .3s ease;
+}
+
+.project-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.project-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  line-height: 1.65;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover {
+    transform: translateY(-3px);
+    border-color: #FF6B2B !important;
+    box-shadow: 0 0 0 1px rgba(255,107,43,.08), 0 8px 22px rgba(255,107,43,.08);
+  }
+  .project-card:hover .project-cover img {
+    transform: scale(1.01);
+  }
+  .filter-btn:hover {
+    transform: translateY(-1px);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .project-card:active,
+  .project-card.touch-active {
+    transform: translateY(-2px);
+    border-color: #FF6B2B !important;
+    box-shadow: 0 0 0 1px rgba(255,107,43,.10), 0 6px 18px rgba(255,107,43,.08);
+  }
+}
+
+.filter-btn {
+  transition: transform .2s ease, border-color .2s ease, background-color .2s ease, color .2s ease;
+}
+
+@media (max-width: 639px) {
+  .project-header {
+    padding-top: 6.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+  .project-header h1 {
+    font-size: clamp(2.6rem, 13vw, 3.6rem);
+  }
+  .project-header p.project-intro {
+    font-size: .95rem;
+  }
+  .page-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .project-card {
+    border-radius: 1rem;
+  }
+  .project-content {
+    padding: 1rem;
+  }
+  .project-card h2 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+  .project-description {
+    font-size: .82rem;
+  }
+  .filter-row {
+    overflow-x: auto;
+    flex-wrap: nowrap !important;
+    padding-bottom: .4rem;
+    scrollbar-width: none;
+  }
+  .filter-row::-webkit-scrollbar {
+    display: none;
+  }
+  .filter-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .project-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+  .project-content {
+    padding: 1.15rem;
+  }
+}

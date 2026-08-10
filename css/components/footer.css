@@ -1,0 +1,18 @@
+/**
+ * css/components/footer.css
+ * ─────────────────────────────────────────
+ * Footer styles. The footer uses Tailwind utilities primarily.
+ * Custom overrides live here.
+ */
+
+/* ════════════════════════════════════════════
+   FOOTER BACK-TO-TOP ARROW ANIMATION
+════════════════════════════════════════════ */
+.footer-top-arrow {
+  transition: transform .2s ease;
+}
+
+a:hover .footer-top-arrow,
+a:focus-visible .footer-top-arrow {
+  transform: translateY(-2px);
+}

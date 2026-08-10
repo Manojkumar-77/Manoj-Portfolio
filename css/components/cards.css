@@ -1,0 +1,75 @@
+/**
+ * css/components/cards.css
+ * ─────────────────────────────────────────
+ * Card hover / interaction system shared across all pages.
+ *
+ * .card-h  → project cards, service cards, experience cards
+ * .stag    → skill/tech tags
+ */
+
+/* ════════════════════════════════════════════
+   CARD INTERACTION BASE
+════════════════════════════════════════════ */
+.card-h {
+  transition: transform .28s cubic-bezier(.4,0,.2,1),
+              border-color .22s ease,
+              box-shadow .22s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* ════════════════════════════════════════════
+   SKILL TAG BASE
+════════════════════════════════════════════ */
+.stag {
+  transition: transform .20s ease,
+              border-color .20s ease,
+              box-shadow .20s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* ════════════════════════════════════════════
+   DESKTOP HOVER & UNIVERSAL TOUCH ACTIVE
+════════════════════════════════════════════ */
+.card-h:hover,
+.card-h.touch-active {
+  transform: translateY(-4px);
+  border-color: #FF6B2B !important;
+  box-shadow: 0 0 0 1px rgba(255,107,43,.10),
+              0 10px 28px rgba(255,107,43,.08);
+}
+
+.stag:hover,
+.stag:active,
+.stag.touch-active {
+  transform: translateY(-2px) scale(1.02);
+  border-color: #FF6B2B !important;
+  box-shadow: 0 0 8px rgba(255,107,43,.35);
+}
+
+/* ════════════════════════════════════════════
+   KEYBOARD FOCUS
+════════════════════════════════════════════ */
+.card-h:focus-within {
+  border-color: #FF6B2B !important;
+}
+
+/* ════════════════════════════════════════════
+   PROJECT COVER IMAGE
+════════════════════════════════════════════ */
+.project-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  -webkit-user-drag: none;
+  user-select: none;
+  transition: transform .3s ease;
+}
+
+.card-h:hover .project-cover-img,
+.card-h.touch-active .project-cover-img {
+  transform: scale(1.01);
+}
